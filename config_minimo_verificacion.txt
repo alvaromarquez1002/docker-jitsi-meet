@@ -1,0 +1,563 @@
+name: docker-jitsi-meet
+services:
+  jicofo:
+    depends_on:
+      prosody:
+        condition: service_started
+        required: true
+    environment:
+      AUTH_TYPE: null
+      BRIDGE_AVG_PARTICIPANT_STRESS: null
+      BRIDGE_STRESS_THRESHOLD: null
+      ENABLE_AUTH: null
+      ENABLE_AUTO_LOGIN: null
+      ENABLE_AUTO_OWNER: null
+      ENABLE_CODEC_AV1: null
+      ENABLE_CODEC_H264: null
+      ENABLE_CODEC_OPUS_RED: null
+      ENABLE_CODEC_VP8: null
+      ENABLE_CODEC_VP9: null
+      ENABLE_JVB_XMPP_SERVER: null
+      ENABLE_MODERATOR_CHECKS: null
+      ENABLE_OCTO: null
+      ENABLE_OCTO_SCTP: null
+      ENABLE_RECORDING: "1"
+      ENABLE_SCTP: null
+      ENABLE_SHARED_DOCUMENT_RANDOM_NAME: null
+      ENABLE_TRANSCRIPTIONS: null
+      ENABLE_VISITORS: null
+      JIBRI_BREWERY_MUC: jibribrewery@internal.auth.localhost
+      JIBRI_PENDING_TIMEOUT: null
+      JIBRI_REQUEST_RETRIES: null
+      JICOFO_AUTH_LIFETIME: null
+      JICOFO_AUTH_PASSWORD: cd9c4374c1ff8c7bb95d904ebdfc6d45
+      JICOFO_AUTH_TYPE: null
+      JICOFO_BRIDGE_REGION_GROUPS: null
+      JICOFO_CONF_INITIAL_PARTICIPANT_WAIT_TIMEOUT: null
+      JICOFO_CONF_MAX_AUDIO_SENDERS: null
+      JICOFO_CONF_MAX_VIDEO_SENDERS: null
+      JICOFO_CONF_SINGLE_PARTICIPANT_TIMEOUT: null
+      JICOFO_CONF_SOURCE_SIGNALING_DELAYS: null
+      JICOFO_CONF_SSRC_REWRITING: null
+      JICOFO_CONF_STRIP_SIMULCAST: null
+      JICOFO_ENABLE_AUTH: null
+      JICOFO_ENABLE_BRIDGE_HEALTH_CHECKS: null
+      JICOFO_ENABLE_HEALTH_CHECKS: null
+      JICOFO_ENABLE_ICE_FAILURE_DETECTION: null
+      JICOFO_ENABLE_LOAD_REDISTRIBUTION: null
+      JICOFO_ENABLE_REST: null
+      JICOFO_HEALTH_CHECKS_USE_PRESENCE: null
+      JICOFO_ICE_FAILURE_INTERVAL: null
+      JICOFO_ICE_FAILURE_MIN_ENDPOINTS: null
+      JICOFO_ICE_FAILURE_THRESHOLD: null
+      JICOFO_MAX_MEMORY: null
+      JICOFO_MULTI_STREAM_BACKWARD_COMPAT: null
+      JICOFO_OCTO_REGION: null
+      JICOFO_RESTART_REQUEST_INTERVAL: null
+      JICOFO_RESTART_REQUEST_MAX: null
+      JICOFO_TRUSTED_DOMAINS: null
+      JIGASI_BREWERY_MUC: null
+      JIGASI_SIP_URI: null
+      JIGASI_TRUSTED_DOMAINS: null
+      JVB_BREWERY_MUC: null
+      JVB_XMPP_AUTH_DOMAIN: null
+      JVB_XMPP_INTERNAL_MUC_DOMAIN: null
+      JVB_XMPP_PORT: null
+      JVB_XMPP_SERVER: null
+      MAX_BRIDGE_PARTICIPANTS: null
+      MAX_SSRC_GROUPS_PER_USER: null
+      MAX_SSRCS_PER_USER: null
+      OCTO_BRIDGE_SELECTION_STRATEGY: null
+      PROSODY_VISITORS_MUC_PREFIX: null
+      SENTRY_DSN: '"0"'
+      SENTRY_ENVIRONMENT: null
+      SENTRY_RELEASE: null
+      TZ: Europe/Madrid
+      VISITORS_MAX_PARTICIPANTS: null
+      VISITORS_MAX_VISITORS_PER_NODE: null
+      VISITORS_XMPP_AUTH_DOMAIN: null
+      VISITORS_XMPP_DOMAIN: null
+      VISITORS_XMPP_SERVER: null
+      XMPP_AUTH_DOMAIN: auth.localhost
+      XMPP_DOMAIN: localhost
+      XMPP_HIDDEN_DOMAIN: null
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.localhost
+      XMPP_MUC_DOMAIN: muc.localhost
+      XMPP_PORT: null
+      XMPP_RECORDER_DOMAIN: null
+      XMPP_SERVER: null
+    image: jitsi/jicofo:unstable
+    labels:
+      service: jitsi-jicofo
+    networks:
+      meet.jitsi: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8888
+        published: "8888"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\jicofo
+        target: /config
+        bind:
+          selinux: Z
+          create_host_path: true
+  jvb:
+    depends_on:
+      prosody:
+        condition: service_started
+        required: true
+    environment:
+      AUTOSCALER_SIDECAR_GROUP_NAME: null
+      AUTOSCALER_SIDECAR_HOST_ID: null
+      AUTOSCALER_SIDECAR_INSTANCE_ID: null
+      AUTOSCALER_SIDECAR_KEY_FILE: null
+      AUTOSCALER_SIDECAR_KEY_ID: null
+      AUTOSCALER_SIDECAR_PORT: null
+      AUTOSCALER_SIDECAR_REGION: null
+      AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL: null
+      AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL: null
+      COLIBRI_REST_ENABLED: null
+      DOCKER_HOST_ADDRESS: null
+      ENABLE_COLIBRI_WEBSOCKET: null
+      ENABLE_JVB_XMPP_SERVER: null
+      ENABLE_OCTO: null
+      ENABLE_SCTP: null
+      JVB_ADVERTISE_IPS: null
+      JVB_ADVERTISE_PRIVATE_CANDIDATES: null
+      JVB_AUTH_PASSWORD: d040bc2c1c4e9ba3ba19cad39759d997
+      JVB_AUTH_USER: null
+      JVB_BREWERY_MUC: null
+      JVB_CC_TRUST_BWE: null
+      JVB_DISABLE_STUN: null
+      JVB_DISABLE_XMPP: null
+      JVB_INSTANCE_ID: null
+      JVB_LOG_FILE: null
+      JVB_MUC_NICKNAME: null
+      JVB_OCTO_BIND_ADDRESS: null
+      JVB_OCTO_REGION: null
+      JVB_OCTO_RELAY_ID: null
+      JVB_PORT: null
+      JVB_REQUIRE_VALID_ADDRESS: null
+      JVB_STUN_SERVERS: null
+      JVB_USE_USRSCTP: null
+      JVB_WS_DOMAIN: null
+      JVB_WS_SERVER_ID: null
+      JVB_WS_TLS: null
+      JVB_XMPP_AUTH_DOMAIN: null
+      JVB_XMPP_INTERNAL_MUC_DOMAIN: null
+      JVB_XMPP_PORT: null
+      JVB_XMPP_SERVER: null
+      PUBLIC_URL: http://localhost:8000
+      SENTRY_DSN: '"0"'
+      SENTRY_ENVIRONMENT: null
+      SENTRY_RELEASE: null
+      SHUTDOWN_REST_ENABLED: null
+      TZ: Europe/Madrid
+      VIDEOBRIDGE_MAX_MEMORY: null
+      XMPP_AUTH_DOMAIN: auth.localhost
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.localhost
+      XMPP_PORT: null
+      XMPP_SERVER: null
+    image: jitsi/jvb:unstable
+    labels:
+      service: jitsi-jvb
+    networks:
+      meet.jitsi: null
+    ports:
+      - mode: ingress
+        target: 10000
+        published: "10000"
+        protocol: udp
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8080
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\jvb
+        target: /config
+        bind:
+          selinux: Z
+          create_host_path: true
+  prosody:
+    environment:
+      AUTH_TYPE: null
+      DISABLE_POLLS: null
+      ENABLE_AUTH: null
+      ENABLE_AV_MODERATION: null
+      ENABLE_BREAKOUT_ROOMS: null
+      ENABLE_END_CONFERENCE: null
+      ENABLE_GUESTS: "1"
+      ENABLE_IPV6: null
+      ENABLE_JAAS_COMPONENTS: null
+      ENABLE_LOBBY: null
+      ENABLE_RECORDING: "1"
+      ENABLE_S2S: null
+      ENABLE_TRANSCRIPTIONS: null
+      ENABLE_VISITORS: null
+      ENABLE_XMPP_WEBSOCKET: null
+      GC_GEN_MAX_TH: null
+      GC_GEN_MIN_TH: null
+      GC_INC_SPEED: null
+      GC_INC_STEP_SIZE: null
+      GC_INC_TH: null
+      GC_TYPE: null
+      GLOBAL_CONFIG: null
+      GLOBAL_MODULES: null
+      JIBRI_RECORDER_PASSWORD: 3794f80fc50ffbf469234834d2e34283
+      JIBRI_RECORDER_USER: null
+      JIBRI_SIP_BREWERY_MUC: null
+      JIBRI_XMPP_PASSWORD: 0876606c4c41c70182c85370a033ae5e
+      JIBRI_XMPP_USER: jibri@auth.localhost
+      JICOFO_AUTH_PASSWORD: cd9c4374c1ff8c7bb95d904ebdfc6d45
+      JICOFO_COMPONENT_SECRET: null
+      JIGASI_TRANSCRIBER_PASSWORD: null
+      JIGASI_TRANSCRIBER_USER: null
+      JIGASI_XMPP_PASSWORD: null
+      JIGASI_XMPP_USER: null
+      JVB_AUTH_PASSWORD: d040bc2c1c4e9ba3ba19cad39759d997
+      JVB_AUTH_USER: null
+      JWT_ACCEPTED_AUDIENCES: null
+      JWT_ACCEPTED_ISSUERS: null
+      JWT_ALLOW_EMPTY: null
+      JWT_APP_ID: null
+      JWT_APP_SECRET: null
+      JWT_ASAP_KEYSERVER: null
+      JWT_AUTH_TYPE: null
+      JWT_ENABLE_DOMAIN_VERIFICATION: null
+      JWT_SIGN_TYPE: null
+      JWT_TOKEN_AUTH_MODULE: null
+      LDAP_AUTH_METHOD: null
+      LDAP_BASE: null
+      LDAP_BINDDN: null
+      LDAP_BINDPW: null
+      LDAP_FILTER: null
+      LDAP_START_TLS: null
+      LDAP_TLS_CACERT_DIR: null
+      LDAP_TLS_CACERT_FILE: null
+      LDAP_TLS_CHECK_PEER: null
+      LDAP_TLS_CIPHERS: null
+      LDAP_URL: null
+      LDAP_USE_TLS: null
+      LDAP_VERSION: null
+      LOG_LEVEL: null
+      MATRIX_LOBBY_BYPASS: null
+      MATRIX_UVS_AUTH_TOKEN: null
+      MATRIX_UVS_ISSUER: null
+      MATRIX_UVS_SYNC_POWER_LEVELS: null
+      MATRIX_UVS_URL: null
+      MAX_PARTICIPANTS: null
+      PROSODY_ADMINS: null
+      PROSODY_AUTH_TYPE: null
+      PROSODY_C2S_LIMIT: null
+      PROSODY_C2S_REQUIRE_ENCRYPTION: null
+      PROSODY_DISABLE_C2S_LIMIT: null
+      PROSODY_DISABLE_S2S_LIMIT: null
+      PROSODY_ENABLE_FILTER_MESSAGES: null
+      PROSODY_ENABLE_METRICS: null
+      PROSODY_ENABLE_RATE_LIMITS: null
+      PROSODY_ENABLE_RECORDING_METADATA: null
+      PROSODY_ENABLE_S2S: null
+      PROSODY_ENABLE_STANZA_COUNTS: null
+      PROSODY_GUEST_AUTH_TYPE: null
+      PROSODY_HTTP_PORT: null
+      PROSODY_LOG_CONFIG: null
+      PROSODY_METRICS_ALLOWED_CIDR: null
+      PROSODY_MODE: null
+      PROSODY_RATE_LIMIT_ALLOW_RANGES: null
+      PROSODY_RATE_LIMIT_CACHE_SIZE: null
+      PROSODY_RATE_LIMIT_LOGIN_RATE: null
+      PROSODY_RATE_LIMIT_SESSION_RATE: null
+      PROSODY_RATE_LIMIT_TIMEOUT: null
+      PROSODY_RESERVATION_ENABLED: null
+      PROSODY_RESERVATION_REST_BASE_URL: null
+      PROSODY_S2S_LIMIT: null
+      PROSODY_S2S_PORT: null
+      PROSODY_TRUSTED_PROXIES: null
+      PROSODY_VISITOR_INDEX: null
+      PROSODY_VISITORS_MUC_PREFIX: null
+      PROSODY_VISITORS_S2S_VHOSTS: null
+      PUBLIC_URL: http://localhost:8000
+      STUN_HOST: null
+      STUN_PORT: null
+      TURN_CREDENTIALS: null
+      TURN_HOST: null
+      TURN_PASSWORD: null
+      TURN_PORT: null
+      TURN_TRANSPORT: null
+      TURN_TTL: null
+      TURN_USERNAME: null
+      TURNS_HOST: null
+      TURNS_PORT: null
+      TZ: Europe/Madrid
+      VISITORS_MAX_VISITORS_PER_NODE: null
+      VISITORS_XMPP_DOMAIN: null
+      VISITORS_XMPP_PORT: null
+      VISITORS_XMPP_SERVER: null
+      XMPP_AUTH_DOMAIN: auth.localhost
+      XMPP_BREAKOUT_MUC_MODULES: null
+      XMPP_CONFIGURATION: null
+      XMPP_DOMAIN: localhost
+      XMPP_GUEST_DOMAIN: null
+      XMPP_HIDDEN_DOMAIN: null
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.localhost
+      XMPP_INTERNAL_MUC_MODULES: null
+      XMPP_LOBBY_MUC_MODULES: null
+      XMPP_MODULES: null
+      XMPP_MUC_CONFIGURATION: null
+      XMPP_MUC_DOMAIN: muc.localhost
+      XMPP_MUC_MODULES: null
+      XMPP_PORT: null
+      XMPP_RECORDER_DOMAIN: null
+      XMPP_SERVER_S2S_PORT: null
+      XMPP_SPEAKERSTATS_MODULES: null
+    expose:
+      - "5222"
+      - "5269"
+      - "5347"
+      - "5280"
+    image: jitsi/prosody:unstable
+    labels:
+      service: jitsi-prosody
+    networks:
+      meet.jitsi:
+        aliases:
+          - xmpp.meet.jitsi
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\prosody\config
+        target: /config
+        bind:
+          selinux: Z
+          create_host_path: true
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\prosody\prosody-plugins-custom
+        target: /prosody-plugins-custom
+        bind:
+          selinux: Z
+          create_host_path: true
+  web:
+    depends_on:
+      jvb:
+        condition: service_started
+        required: true
+    environment:
+      AMPLITUDE_ID: null
+      ANALYTICS_SCRIPT_URLS: null
+      ANALYTICS_WHITELISTED_EVENTS: null
+      AUDIO_QUALITY_OPUS_BITRATE: null
+      AUTO_CAPTION_ON_RECORD: null
+      BOSH_RELATIVE: null
+      BRANDING_DATA_URL: null
+      CHROME_EXTENSION_BANNER_JSON: null
+      CODEC_ORDER_JVB: null
+      CODEC_ORDER_JVB_MOBILE: null
+      CODEC_ORDER_P2P: null
+      CODEC_ORDER_P2P_MOBILE: null
+      COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME: null
+      COLIBRI_WEBSOCKET_PORT: null
+      COLIBRI_WEBSOCKET_REGEX: null
+      CONFCODE_URL: null
+      CORS_HEADER_ACCESS_CONTROL_ALLOW_ORIGIN: null
+      DEFAULT_LANGUAGE: null
+      DEPLOYMENTINFO_ENVIRONMENT: null
+      DEPLOYMENTINFO_ENVIRONMENT_TYPE: null
+      DEPLOYMENTINFO_REGION: null
+      DEPLOYMENTINFO_SHARD: null
+      DESKTOP_SHARING_FRAMERATE_AUTO: null
+      DESKTOP_SHARING_FRAMERATE_MAX: null
+      DESKTOP_SHARING_FRAMERATE_MIN: null
+      DIALIN_NUMBERS_URL: null
+      DIALOUT_AUTH_URL: null
+      DIALOUT_CODES_URL: null
+      DISABLE_AUDIO_LEVELS: null
+      DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP: null
+      DISABLE_DEEP_LINKING: null
+      DISABLE_GRANT_MODERATOR: null
+      DISABLE_HTTPS: "1"
+      DISABLE_KICKOUT: null
+      DISABLE_LOCAL_RECORDING: null
+      DISABLE_POLLS: null
+      DISABLE_PRIVATE_CHAT: null
+      DISABLE_PROFILE: null
+      DISABLE_REACTIONS: null
+      DISABLE_REMOTE_VIDEO_MENU: null
+      DISABLE_START_FOR_ALL: null
+      DROPBOX_APPKEY: null
+      DROPBOX_REDIRECT_URI: null
+      DYNAMIC_BRANDING_URL: null
+      E2EPING_MAX_CONFERENCE_SIZE: null
+      E2EPING_MAX_MESSAGE_PER_SECOND: null
+      E2EPING_NUM_REQUESTS: null
+      ENABLE_ADAPTIVE_MODE: null
+      ENABLE_AUDIO_PROCESSING: null
+      ENABLE_AUTH: null
+      ENABLE_AUTH_DOMAIN: null
+      ENABLE_AUTOMATIC_GAIN_CONTROL: null
+      ENABLE_BREAKOUT_ROOMS: null
+      ENABLE_CALENDAR: null
+      ENABLE_CLOSE_PAGE: null
+      ENABLE_COLIBRI_WEBSOCKET: null
+      ENABLE_COLIBRI_WEBSOCKET_UNSAFE_REGEX: null
+      ENABLE_E2EPING: null
+      ENABLE_FILE_RECORDING_SHARING: null
+      ENABLE_GUESTS: "1"
+      ENABLE_HSTS: null
+      ENABLE_HTTP_REDIRECT: null
+      ENABLE_IPV6: null
+      ENABLE_JAAS_COMPONENTS: null
+      ENABLE_LETSENCRYPT: null
+      ENABLE_LIVESTREAMING: null
+      ENABLE_LIVESTREAMING_DATA_PRIVACY_LINK: null
+      ENABLE_LIVESTREAMING_HELP_LINK: null
+      ENABLE_LIVESTREAMING_TERMS_LINK: null
+      ENABLE_LIVESTREAMING_VALIDATOR_REGEXP_STRING: null
+      ENABLE_LOAD_TEST_CLIENT: null
+      ENABLE_LOCAL_RECORDING_NOTIFY_ALL_PARTICIPANT: null
+      ENABLE_LOCAL_RECORDING_SELF_START: null
+      ENABLE_NO_AUDIO_DETECTION: null
+      ENABLE_NOISY_MIC_DETECTION: null
+      ENABLE_OCTO: null
+      ENABLE_OPUS_RED: null
+      ENABLE_P2P: null
+      ENABLE_PREJOIN_PAGE: null
+      ENABLE_RECORDING: "1"
+      ENABLE_REMB: null
+      ENABLE_REQUIRE_DISPLAY_NAME: null
+      ENABLE_SERVICE_RECORDING: null
+      ENABLE_SIMULCAST: null
+      ENABLE_STATS_ID: null
+      ENABLE_STEREO: null
+      ENABLE_SUBDOMAINS: null
+      ENABLE_TALK_WHILE_MUTED: null
+      ENABLE_TCC: null
+      ENABLE_TRANSCRIPTIONS: null
+      ENABLE_VLA: null
+      ENABLE_WELCOME_PAGE: null
+      ENABLE_XMPP_WEBSOCKET: null
+      ETHERPAD_PUBLIC_URL: null
+      ETHERPAD_URL_BASE: null
+      GOOGLE_ANALYTICS_ID: null
+      GOOGLE_API_APP_CLIENT_ID: null
+      HIDE_PREJOIN_DISPLAY_NAME: null
+      HIDE_PREJOIN_EXTRA_BUTTONS: null
+      HIDE_PREMEETING_BUTTONS: null
+      INVITE_SERVICE_URL: null
+      JVB_PREFER_SCTP: null
+      LETSENCRYPT_ACME_SERVER: null
+      LETSENCRYPT_DOMAIN: null
+      LETSENCRYPT_EMAIL: null
+      LETSENCRYPT_USE_STAGING: null
+      MATOMO_ENDPOINT: null
+      MATOMO_SITE_ID: null
+      MICROSOFT_API_APP_CLIENT_ID: null
+      NGINX_KEEPALIVE_TIMEOUT: null
+      NGINX_RESOLVER: null
+      NGINX_WORKER_CONNECTIONS: null
+      NGINX_WORKER_PROCESSES: null
+      P2P_PREFERRED_CODEC: null
+      P2P_STUN_SERVERS: null
+      PEOPLE_SEARCH_URL: null
+      PREFERRED_LANGUAGE: null
+      PUBLIC_URL: http://localhost:8000
+      RESOLUTION: null
+      RESOLUTION_MIN: null
+      RESOLUTION_WIDTH: null
+      RESOLUTION_WIDTH_MIN: null
+      START_AUDIO_MUTED: null
+      START_AUDIO_ONLY: null
+      START_SILENT: null
+      START_VIDEO_MUTED: null
+      START_WITH_AUDIO_MUTED: null
+      START_WITH_VIDEO_MUTED: null
+      TOKEN_AUTH_URL: null
+      TOOLBAR_BUTTONS: null
+      TRANSLATION_LANGUAGES: null
+      TRANSLATION_LANGUAGES_HEAD: null
+      TZ: Europe/Madrid
+      USE_APP_LANGUAGE: null
+      VIDEOQUALITY_BITRATE_AV1_FULL: null
+      VIDEOQUALITY_BITRATE_AV1_HIGH: null
+      VIDEOQUALITY_BITRATE_AV1_LOW: null
+      VIDEOQUALITY_BITRATE_AV1_SS_HIGH: null
+      VIDEOQUALITY_BITRATE_AV1_STANDARD: null
+      VIDEOQUALITY_BITRATE_AV1_ULTRA: null
+      VIDEOQUALITY_BITRATE_H264_FULL: null
+      VIDEOQUALITY_BITRATE_H264_HIGH: null
+      VIDEOQUALITY_BITRATE_H264_LOW: null
+      VIDEOQUALITY_BITRATE_H264_SS_HIGH: null
+      VIDEOQUALITY_BITRATE_H264_STANDARD: null
+      VIDEOQUALITY_BITRATE_H264_ULTRA: null
+      VIDEOQUALITY_BITRATE_VP8_FULL: null
+      VIDEOQUALITY_BITRATE_VP8_HIGH: null
+      VIDEOQUALITY_BITRATE_VP8_LOW: null
+      VIDEOQUALITY_BITRATE_VP8_SS_HIGH: null
+      VIDEOQUALITY_BITRATE_VP8_STANDARD: null
+      VIDEOQUALITY_BITRATE_VP8_ULTRA: null
+      VIDEOQUALITY_BITRATE_VP9_FULL: null
+      VIDEOQUALITY_BITRATE_VP9_HIGH: null
+      VIDEOQUALITY_BITRATE_VP9_LOW: null
+      VIDEOQUALITY_BITRATE_VP9_SS_HIGH: null
+      VIDEOQUALITY_BITRATE_VP9_STANDARD: null
+      VIDEOQUALITY_BITRATE_VP9_ULTRA: null
+      VIDEOQUALITY_PREFERRED_CODEC: null
+      WHITEBOARD_COLLAB_SERVER_PUBLIC_URL: null
+      WHITEBOARD_COLLAB_SERVER_URL_BASE: null
+      XMPP_AUTH_DOMAIN: auth.localhost
+      XMPP_BOSH_URL_BASE: null
+      XMPP_DOMAIN: localhost
+      XMPP_GUEST_DOMAIN: null
+      XMPP_HIDDEN_DOMAIN: null
+      XMPP_MUC_DOMAIN: muc.localhost
+      XMPP_PORT: null
+      XMPP_RECORDER_DOMAIN: null
+    image: jitsi/web:unstable
+    labels:
+      service: jitsi-web
+    networks:
+      meet.jitsi: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8000"
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        published: "8443"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\web
+        target: /config
+        bind:
+          selinux: Z
+          create_host_path: true
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\web\crontabs
+        target: /var/spool/cron/crontabs
+        bind:
+          selinux: Z
+          create_host_path: true
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\transcripts
+        target: /usr/share/jitsi-meet/transcripts
+        bind:
+          selinux: Z
+          create_host_path: true
+      - type: bind
+        source: C:\Users\amqma\.jitsi-meet-cfg\web\load-test
+        target: /usr/share/jitsi-meet/load-test
+        bind:
+          selinux: Z
+          create_host_path: true
+networks:
+  meet.jitsi:
+    name: docker-jitsi-meet_meet.jitsi

@@ -1,0 +1,81 @@
+jicofo-1  | [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+jicofo-1  | [s6-init] ensuring user provided files have correct perms...exited 0.
+jicofo-1  | [fix-attrs.d] applying ownership & permissions fixes...
+jicofo-1  | [fix-attrs.d] done.
+jicofo-1  | [cont-init.d] executing container initialization scripts...
+jicofo-1  | [cont-init.d] 01-set-timezone: executing... 
+jicofo-1  | [cont-init.d] 01-set-timezone: exited 0.
+jicofo-1  | [cont-init.d] 10-config: executing... 
+jicofo-1  | [cont-init.d] 10-config: exited 0.
+jicofo-1  | [cont-init.d] done.
+jicofo-1  | [services.d] starting services
+jicofo-1  | [services.d] done.
+jicofo-1  | Jicofo 2025-05-12 19:15:21.736 INFO: [1] Main.main#46: Starting Jicofo.
+jicofo-1  | Jicofo 2025-05-12 19:15:21.912 INFO: [1] JitsiConfig.<clinit>#47: Initialized newConfig: merge of /config/jicofo.conf: 1,system properties,reference.conf @ jar:file:/usr/share/jicofo/lib/jicofo-selector-1.0-1129.jar!/reference.conf: 1
+jicofo-1  | Jicofo 2025-05-12 19:15:21.915 INFO: [1] ReadOnlyConfigurationService.reloadConfiguration#40: net.java.sip.communicator.SC_HOME_DIR_LOCATION not set
+jicofo-1  | Jicofo 2025-05-12 19:15:21.917 INFO: [1] JitsiConfig.<clinit>#68: Initialized legacyConfig: sip communicator props (no description provided)
+jicofo-1  | Jicofo 2025-05-12 19:15:21.923 INFO: [1] JitsiConfig$Companion.reloadNewConfig#94: Reloading the Typesafe config source (previously reloaded 0 times).
+jicofo-1  | Jicofo 2025-05-12 19:15:22.263 INFO: [1] Smack.initialize#30: Setting XML parsing limits.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.270 INFO: [1] Smack.initialize#42: Using JitsiXmppStringprep.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.495 INFO: [1] MetricsUpdater.addUpdateTask#45: Scheduling metrics update task with interval PT30S.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.514 INFO: [1] JicofoServices.createAuthenticationAuthority#200: Authentication service disabled.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.546 WARNING: [1] [xmpp_connection=client] XmppProviderKt.createXmppConnection#343: Disabling TLS certificate verification!
+jicofo-1  | Jicofo 2025-05-12 19:15:22.628 INFO: [1] XmppServices.<init>#45: No dedicated Service XMPP connection configured, re-using the client XMPP connection.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.637 INFO: [1] XmppServices.<init>#75: No Jigasi detector configured.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.640 INFO: [1] AvModerationHandler.componentsChanged#115: No av_moderation component discovered.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.642 SEVERE: [26] [xmpp_connection=client] XmppProvider.doConnect#219: Failed to connect/login: The following addresses failed: 'RFC 6120 A/AAAA Endpoint + [xmpp.meet.jitsi:5222] (xmpp.meet.jitsi/172.18.0.2:5222)' failed because: java.net.ConnectException: Connection refused
+jicofo-1  | org.jivesoftware.smack.SmackException$EndpointConnectionException: The following addresses failed: 'RFC 6120 A/AAAA Endpoint + [xmpp.meet.jitsi:5222] (xmpp.meet.jitsi/172.18.0.2:5222)' failed because: java.net.ConnectException: Connection refused
+jicofo-1  | 	at org.jivesoftware.smack.SmackException$EndpointConnectionException.from(SmackException.java:334)
+jicofo-1  | 	at org.jivesoftware.smack.tcp.XMPPTCPConnection.connectUsingConfiguration(XMPPTCPConnection.java:664)
+jicofo-1  | 	at org.jivesoftware.smack.tcp.XMPPTCPConnection.connectInternal(XMPPTCPConnection.java:849)
+jicofo-1  | 	at org.jivesoftware.smack.AbstractXMPPConnection.connect(AbstractXMPPConnection.java:525)
+jicofo-1  | 	at org.jitsi.jicofo.xmpp.XmppProvider.doConnect(XmppProvider.kt:205)
+jicofo-1  | 	at org.jitsi.jicofo.xmpp.XmppProvider.scheduleConnectTask$lambda$3$lambda$2(XmppProvider.kt:112)
+jicofo-1  | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+jicofo-1  | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+jicofo-1  | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+jicofo-1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+jicofo-1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+jicofo-1  | 	at java.base/java.lang.Thread.run(Thread.java:840)
+jicofo-1  | Jicofo 2025-05-12 19:15:22.645 INFO: [1] RoomMetadataHandler.componentsChanged#96: No room_metadata component discovered.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.647 WARNING: [26] [xmpp_connection=client] XmppProvider.scheduleConnectTask$lambda$3$lambda$2#113: Failed to connect, will re-try after 1 second
+jicofo-1  | Jicofo 2025-05-12 19:15:22.648 INFO: [1] [connection=client] VisitorsManager.updateAddress#57: VisitorsComponentManager is now disabled with address null
+jicofo-1  | Jicofo 2025-05-12 19:15:22.652 INFO: [1] ConferenceIqHandler.componentsChanged#214: No breakout room component discovered.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.664 INFO: [1] BridgeSelector.<init>#56: Using org.jitsi.jicofo.bridge.SingleBridgeSelectionStrategy
+jicofo-1  | Jicofo 2025-05-12 19:15:22.672 INFO: [1] [type=bridge brewery=jvbbrewery] BaseBrewery.<init>#108: Initialized with JID=jvbbrewery@internal-muc.localhost
+jicofo-1  | Jicofo 2025-05-12 19:15:22.675 INFO: [1] JicofoServices.<init>#108: No Jibri detector configured.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.675 INFO: [1] JicofoServices.<init>#114: No SIP Jibri detector configured.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.680 INFO: [1] Application.start#85: Starting ktor on port 8888, host 0.0.0.0
+jicofo-1  | Jicofo 2025-05-12 19:15:22.737 INFO: [1] io.ktor.server.engine.EmbeddedServer.createClassLoader: Autoreload is disabled because the development mode is off.
+jicofo-1  | Jicofo 2025-05-12 19:15:22.899 INFO: [1] io.ktor.server.engine.BaseApplicationEngine._init_$lambda$1: Application started in 0.181 seconds.
+jicofo-1  | Jicofo 2025-05-12 19:15:23.013 INFO: [1] JicofoServices.<init>#159: Registering GlobalMetrics periodic updates.
+jicofo-1  | Jicofo 2025-05-12 19:15:23.013 INFO: [32] io.ktor.server.engine.EmbeddedServer$start$3.invokeSuspend: Responding at http://0.0.0.0:8888
+jicofo-1  | Jicofo 2025-05-12 19:15:23.628 SEVERE: [26] [xmpp_connection=client] XmppProvider.doConnect#219: Failed to connect/login: The following addresses failed: 'RFC 6120 A/AAAA Endpoint + [xmpp.meet.jitsi:5222] (xmpp.meet.jitsi/172.18.0.2:5222)' failed because: java.net.ConnectException: Connection refused
+jicofo-1  | org.jivesoftware.smack.SmackException$EndpointConnectionException: The following addresses failed: 'RFC 6120 A/AAAA Endpoint + [xmpp.meet.jitsi:5222] (xmpp.meet.jitsi/172.18.0.2:5222)' failed because: java.net.ConnectException: Connection refused
+jicofo-1  | 	at org.jivesoftware.smack.SmackException$EndpointConnectionException.from(SmackException.java:334)
+jicofo-1  | 	at org.jivesoftware.smack.tcp.XMPPTCPConnection.connectUsingConfiguration(XMPPTCPConnection.java:664)
+jicofo-1  | 	at org.jivesoftware.smack.tcp.XMPPTCPConnection.connectInternal(XMPPTCPConnection.java:849)
+jicofo-1  | 	at org.jivesoftware.smack.AbstractXMPPConnection.connect(AbstractXMPPConnection.java:525)
+jicofo-1  | 	at org.jitsi.jicofo.xmpp.XmppProvider.doConnect(XmppProvider.kt:205)
+jicofo-1  | 	at org.jitsi.jicofo.xmpp.XmppProvider.scheduleConnectTask$lambda$3$lambda$2(XmppProvider.kt:112)
+jicofo-1  | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+jicofo-1  | 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+jicofo-1  | 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+jicofo-1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+jicofo-1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+jicofo-1  | 	at java.base/java.lang.Thread.run(Thread.java:840)
+jicofo-1  | Jicofo 2025-05-12 19:15:23.628 WARNING: [26] [xmpp_connection=client] XmppProvider.scheduleConnectTask$lambda$3$lambda$2#113: Failed to connect, will re-try after 1 second
+jicofo-1  | Jicofo 2025-05-12 19:15:24.786 INFO: [26] [xmpp_connection=client] XmppProvider.doConnect#206: Connected, JID=null
+jicofo-1  | Jicofo 2025-05-12 19:15:24.848 INFO: [26] [xmpp_connection=client] XmppProvider.fireRegistrationStateChanged#256: Set replyTimeout=PT15S
+jicofo-1  | Jicofo 2025-05-12 19:15:24.852 INFO: [26] [xmpp_connection=client] XmppProvider$connectionListener$1.authenticated#130: Registered (resumed=false). isSmEnabled:true isSmAvailable:true isSmResumptionPossible:true
+jicofo-1  | Jicofo 2025-05-12 19:15:24.853 INFO: [26] [xmpp_connection=client] XmppProvider$connectionListener$1.authenticated#141: Will discover components for localhost
+jicofo-1  | Jicofo 2025-05-12 19:15:24.853 INFO: [26] [xmpp_connection=client] XmppProvider.scheduleConnectTask$lambda$3$lambda$2#115: Connected.
+jicofo-1  | Jicofo 2025-05-12 19:15:24.856 WARNING: [41] [xmpp_connection=client] XmppProvider.setComponents#80: Discovered components: [Component(type=lobbyrooms, address=lobby.localhost), Component(type=av_moderation, address=avmoderation.localhost), Component(type=conference_duration, address=conferenceduration.localhost), Component(type=end_conference, address=endconference.localhost), Component(type=breakout_rooms, address=breakout.localhost), Component(type=room_metadata, address=metadata.localhost), Component(type=speakerstats, address=speakerstats.localhost)]
+jicofo-1  | Jicofo 2025-05-12 19:15:24.857 INFO: [40] AvModerationHandler.componentsChanged#118: Using av_moderation component at avmoderation.localhost.
+jicofo-1  | Jicofo 2025-05-12 19:15:24.858 INFO: [43] [connection=client] VisitorsManager.updateAddress#57: VisitorsComponentManager is now disabled with address null
+jicofo-1  | Jicofo 2025-05-12 19:15:24.858 INFO: [40] ConferenceIqHandler.componentsChanged#217: Using breakout room component at breakout.localhost.
+jicofo-1  | Jicofo 2025-05-12 19:15:24.858 INFO: [42] RoomMetadataHandler.componentsChanged#99: Using room_metadata component at metadata.localhost.
+jicofo-1  | Jicofo 2025-05-12 19:15:24.915 INFO: [37] [type=bridge brewery=jvbbrewery] BaseBrewery.start#200: Joined the room.
+jicofo-1  | Jicofo 2025-05-12 19:15:28.052 INFO: [38] [type=bridge brewery=jvbbrewery] BaseBrewery.addInstance#370: Added brewery instance: jvbbrewery@internal-muc.localhost/0a582cfe3825
+jicofo-1  | Jicofo 2025-05-12 19:15:28.055 INFO: [38] BridgeSelector.addJvbAddress#99: Added new videobridge: Bridge[jid=jvbbrewery@internal-muc.localhost/0a582cfe3825, version=2.3.229-ged54d978, relayId=null, region=null, correctedStress=0.00]
+jicofo-1  | Jicofo 2025-05-12 19:15:28.058 INFO: [46] JvbDoctor.bridgeAdded#134: Scheduled health-check task for: Bridge[jid=jvbbrewery@internal-muc.localhost/0a582cfe3825, version=2.3.229-ged54d978, relayId=null, region=null, correctedStress=0.00]
